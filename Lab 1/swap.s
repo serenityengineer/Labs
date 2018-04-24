@@ -5,7 +5,7 @@
 zing:	.word	0, 1, 2, 3, 4, 5, 6, 7
 str1:	.asciz	"zing[4] now has "
 str2:	.asciz	"\nzing[5] now has "
-
+#str3:	.asciz	"\t4 now has "
 	.text
 
 main:	
@@ -46,7 +46,8 @@ swap:
 				
 	sw		t2, 0(t1)	
 	sw		t0, 4(t1)
-	addi  		t4, zero, 5	
+#	addi  		t4, zero, 5	
+
 	ret		
 
 # END OF PROGRAM
