@@ -4,9 +4,12 @@
 	.text
 
 main:
-	
-	
+	li a0, 5 #load i into a0
+	jal AddItUp
 
+	li a1, 10 #load j into a1
+	jal AddItUp
+	
 AddItUp:
 	
 	addi sp, sp, -8 # making space on stack
