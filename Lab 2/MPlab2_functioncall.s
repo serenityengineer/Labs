@@ -28,7 +28,8 @@
 		
 		add 	t5, s3, s4	# c = a + b
 		sw 		t5, c, t6 
-	
+		
+		j exit
 
 	addItUp:
 		lw	a2, 0(sp)	# load n into register a2 
@@ -44,3 +45,5 @@
 		
         add	a0, zero, t0	# store x into a0 so it can be returned
 		ret
+
+	exit:
