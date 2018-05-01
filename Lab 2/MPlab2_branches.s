@@ -1,8 +1,8 @@
 	
 	.data
 	
-varA:	.word	15
-varB:	.word	10
+varA:	.word	10
+varB:	.word	15
 varC: 	.word	6
 
 varZ:	.word	0
