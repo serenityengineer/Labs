@@ -27,7 +27,8 @@
 		lw 	s4, b
 		
 		add 	t5, s3, s4	# c = a + b
-		sw 		t5, c, t6 
+		sw 	t5, c, t6 
+		lw	s5, c	
 	
 
 	addItUp:
