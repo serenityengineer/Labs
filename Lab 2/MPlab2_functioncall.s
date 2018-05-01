@@ -1,41 +1,46 @@
 
-.data
-	myArray:	.word	5, 10
+	.data
+	
 
-	.text
+	a:	.word	0
+	b:	.word	0
+	c:	.word	0
+	
 
-main:
-	la a0, myArray #load address of array
+		.text
+	main:
+		addi	t0, zero, 5		# i = 5
+		addi	t1, zero, 10	# j = 10
+		addi	sp, sp, -8	# allocate memory
+		sw	t0, 0(sp)	# store 5 in stack
+		sw	t1, 4(sp)	# store 10 in stack
+		jal	addItUp		# function call
+		
+		sw	a0, a, t6
+		lw 	s3, a
+		
+		lw	t1, 4(sp)
+		sw	t1, 0(sp)	# store 10 in stack
+		jal addItUp		# function call
+		
+		sw	a0, b, t6
+		lw 	s4, b
+		
+		add 	t5, s3, s4	# c = a + b
+		sw 		t5, c, t6 
 	
-    li a1, 1
-	jal AddItUp
-  
-#	add a1, zero, a0 #store a0 new value
 
-	li a1, 2 
-	jal AddItUp
-#	add a2, zero, a0 #store a0 new value
-	
-AddItUp:
-	slli	t1, a1, 2	#t1 has the address sent from main: t1=4*k
-	add		t1, a0, t1	#reg t1=address of myArray[k]
-	lw		t0, 0(t1)	#reg t0=i
-	add t2, zero, zero # t2 = x = 0
-	
-	#addi sp, sp, -8 # making space on stack
-	#sw t0, 0(sp) # saving i
-	#sw t1, 4(sp) #saving j
-	
-	add t3, zero, zero # new i
-	#add t1, zero, zero # new x
-	
-	forloop:
-		add, t2, t2, t3 #x=x+i
-		addi t2, t2, 1 #x=x+1
-		blt t3, a2, forloop #increment i
-	add a2, zero, t1 # returning x
-		#sw t2, 4(a0)
-	#lw t0, 0(sp) #loading original i
-	#lw t1, 4(sp) # loading original j
-	#addi sp, sp, 8 # deleting stack spaces
-	ret
+	addItUp:
+		lw	a2, 0(sp)	# load n into register a2 
+		addi 	t0, zero, 0	# t0 = x = 0
+		addi	t1, zero, 0	# t1 = i = 0
+		j forLoop
+		
+		forLoop:
+			add	t0, t0, t1	# x = x + i
+			addi	t0, t0, 1	# x = x + 1
+			addi	t1, t1, 1	# i++
+			blt	t1, a2, forLoop
+		
+        add	a0, zero, t0	# store x into a0 so it can be returned
+		ret
