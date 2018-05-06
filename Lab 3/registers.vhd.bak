@@ -104,8 +104,6 @@ COMPONENT register8		--this defines the 8bit register as a usable component
 	     	dataout: OUT std_logic_vector(7 DOWNTO 0));
 	END COMPONENT;
 	
-	SIGNAL 	enable: std_logic_vector(3 DOWNTO 0);
-	SIGNAL	writein: std_logic_vector(3 DOWNTO 0);
 begin
 
 	-- insert code here.
