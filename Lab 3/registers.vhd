@@ -74,7 +74,7 @@ architecture memmy of register8 is
 	end component;
 begin
 	-- insert your code here.
-	--Code:
+	--Code: using generate to instantiate the register
 	REG_GEN:
 		FOR p IN 0 TO 7 GENERATE
 			Rp: bitstorage PORT MAP(datain(p), enout, writein, dataout(p));
@@ -103,12 +103,30 @@ COMPONENT register8		--this defines the 8bit register as a usable component
 	     	writein: IN std_logic;
 	     	dataout: OUT std_logic_vector(7 DOWNTO 0));
 	END COMPONENT;
-	
+	--enable created as a vector, used to enable the 4 components of the 32
+	--bit register.
 	SIGNAL 	enable: std_logic_vector(3 DOWNTO 0);
 	SIGNAL	writein: std_logic_vector(3 DOWNTO 0);
 begin
-
 	-- insert code here.
+	-- instantiating the register
+	-- creating the structure for each component, set enables
+	enable <= 	"0000" WHEN enout32 = '0' ELSE
+				"1100" WHEN enout32 = '1' AND enout16 = '0' ELSE
+				"1110" WHEN enout32 = '1' AND enout16 = '1' AND enout8 = '0' ELSE
+				"1111" WHEN enout32 = '1' AND enout16 = '1' AND enout8 = '1';
+	
+	writein <=	"1111" WHEN writein32 = '1' ELSE
+				"0011" WHEN writein32 = '0' AND writein16 = '1' ELSE
+				"0001" WHEN writein32 = '0' AND writein16 = '0' AND writein8 = '1' ELSE
+				"0000" WHEN writein32 = '0' AND writein16 = '0' AND writein8 = '0';
+
+	-- using component of 8 bit register; stack of 4 8Bits creates a 32Bit reg:
+R1: register8 PORT MAP(datain(7 DOWNTO 0), enable(0), writein(0), dataout(7 DOWNTO 0));
+R2: register8 PORT MAP(datain(15 DOWNTO 8), enable(1), writein(1), dataout(15 DOWNTO 8));
+R3: register8 PORT MAP(datain(23 DOWNTO 16), enable(2), writein(2), dataout(23 DOWNTO 16));
+R4: register8 PORT MAP(datain(31 DOWNTO 24), enable(3), writein(3), dataout(31 DOWNTO 24));
+
 
 end architecture biggermem;
 

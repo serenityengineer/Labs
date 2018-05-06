@@ -1,0 +1,12 @@
+{C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity testreg_vhd
+-- Compiling architecture behavior of testreg_vhd
+
+} {} {}}
