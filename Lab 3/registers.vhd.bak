@@ -156,8 +156,8 @@ COMPONENT fulladder
 end COMPONENT;
 -- use cary32 as the register for adding
 -- use hold to work through the operations
---SIGNAL carry32: std_logic_vector(31 DOWNTO 0);
---SIGNAL hold: std_logic_vector(31 DOWNTO 0);
+SIGNAL carry32: std_logic_vector(31 DOWNTO 0);
+SIGNAL hold: std_logic_vector(31 DOWNTO 0);
 
 begin
 	-- insert code here.
@@ -179,9 +179,10 @@ entity shift_register is
 end entity shift_register;
 
 architecture shifter of shift_register is
-	
+	SIGNAL shifter: std_logic_vector(5 downto 0);
 begin
 	-- insert code here.
+	
 end architecture shifter;
 
 

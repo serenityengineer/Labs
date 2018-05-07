@@ -173,15 +173,25 @@ Use ieee.std_logic_unsigned.all;
 
 entity shift_register is
 	port(	datain: in std_logic_vector(31 downto 0);
-	   	dir: in std_logic;
+	   	dir: in std_logic; --direction
 		shamt:	in std_logic_vector(4 downto 0);
 		dataout: out std_logic_vector(31 downto 0));
 end entity shift_register;
 
 architecture shifter of shift_register is
 	
+	SIGNAL shift: std_logic_vector(5 downto 0);
 begin
 	-- insert code here.
+	WITH shift SELECT dataout(31 downto 0) <=
+		datain(28 downto 0) & "000" WHEN "000011"
+		datain(29 downto 0) & "00" WHEN "000010"
+		datain(30 downto 0) & "0" WHEN "000001"
+		"000" & datain(28 downto 0) WHEN "100011"
+		"00" & datain(29 downto 0) WHEN "100010"
+		"0" & datain(30 downto 0) WHEN "100001"
+		datain(31 downto 0) WHEN OTHERS;
+
 end architecture shifter;
 
 
