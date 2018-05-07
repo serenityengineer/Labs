@@ -1,4 +1,4 @@
----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --
 -- LAB #3
 --
@@ -66,6 +66,7 @@ entity register8 is
 end entity register8;
 
 architecture memmy of register8 is
+	--using bitstorage from above as a component	
 	component bitstorage
 		port(bitin: in std_logic;
 		 	 enout: in std_logic;
@@ -75,9 +76,10 @@ architecture memmy of register8 is
 begin
 	-- insert your code here.
 	--Code: using generate to instantiate the register
+	
 	REG_GEN:
-		FOR p IN 0 TO 7 GENERATE
-			Rp: bitstorage PORT MAP(datain(p), enout, writein, dataout(p));
+		FOR r8 IN 0 TO 7 GENERATE
+			R0: bitstorage PORT MAP(datain(r8), enout, writein, dataout(r8));
 		END GENERATE;
 end architecture memmy;
 
@@ -156,22 +158,26 @@ COMPONENT fulladder
 end COMPONENT;
 -- use cary32 as the register for adding
 -- use hold to work through the operations
-SIGNAL carry32: std_logic_vector(31 DOWNTO 0);
+SIGNAL carry32: std_logic_vector(32 DOWNTO 0);
 SIGNAL hold: std_logic_vector(31 DOWNTO 0);
 
 begin
-	with add_sub select
-	input <= not (datain_b) when "1",
-		datain_b when others;
-
-	c_out(0) <= input;
-	co <= c_out(32);
-
-	full_adder: for i in 0 to 31 generate
-		total: fulladder PORT MAP(datain_a(i), input(i), c_out(i), dataout(i), c_out(i+1));
 	
-	end generate;  
+	carry32(0) <= add_sub; -- no carry in for the first bit
+	-- this will flip the bits of datain_b if add_sub is '1'
+	-- i.e. if it is a subtraction operation
+	holdReg: for i in 31 downto 0 GENERATE
+		holdit: hold(i) <= datain_b(i) xor add_sub;
+	END GENERATE;
+
+	-- use the full adder component via port-mapping 
+	-- to complete the addition now that the subtraction
+	-- posibility has been taken care of
+	addOp: for j in 0 to 31 generate
+		totSum: fulladder PORT MAP(datain_a(j), hold(j), carry32(j), dataout(j), carry32(j+1));	
+	end generate; 
 	
+	co <= carry32(32); -- assign the final carry out
 
 end architecture calc;
 
@@ -191,14 +197,17 @@ end entity shift_register;
 architecture shifter of shift_register is
 	SIGNAL shift: std_logic_vector(5 downto 0);
 begin
+	-- shift vector gets the direction and shift amount
+	shift <= dir & shamt;
 	-- insert code here.
+	-- using with/select for concurrency
 	WITH shift SELECT dataout(31 downto 0) <=
-		datain(28 downto 0) & "000" WHEN "000011"
-		datain(29 downto 0) & "00" WHEN "000010"
-		datain(30 downto 0) & "0" WHEN "000001"
-		"000" & datain(28 downto 0) WHEN "100011"
-		"00" & datain(29 downto 0) WHEN "100010"
-		"0" & datain(30 downto 0) WHEN "100001"
+		datain(28 downto 0) & "000" WHEN "000011",
+		datain(29 downto 0) & "00" WHEN "000010",
+		datain(30 downto 0) & "0" WHEN "000001",
+		"000" & datain(28 downto 0) WHEN "100011",
+		"00" & datain(29 downto 0) WHEN "100010",
+		"0" & datain(30 downto 0) WHEN "100001",
 		datain(31 downto 0) WHEN OTHERS;
 
 end architecture shifter;
