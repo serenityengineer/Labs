@@ -183,12 +183,12 @@ architecture shifter of shift_register is
 begin
 	-- insert code here.
 	WITH shift SELECT dataout(31 downto 0) <=
-		datain(28 downto 0) & "000" WHEN "000011"
-		datain(29 downto 0) & "00" WHEN "000010"
-		datain(30 downto 0) & "0" WHEN "000001"
-		"000" & datain(28 downto 0) WHEN "100011"
-		"00" & datain(29 downto 0) WHEN "100010"
-		"0" & datain(30 downto 0) WHEN "100001"
+		datain(28 downto 0) & "000" WHEN "000011",
+		datain(29 downto 0) & "00" WHEN "000010",
+		datain(30 downto 0) & "0" WHEN "000001",
+		"000" & datain(28 downto 0) WHEN "100011",
+		"00" & datain(29 downto 0) WHEN "100010",
+		"0" & datain(30 downto 0) WHEN "100001",
 		datain(31 downto 0) WHEN OTHERS;
 
 end architecture shifter;
