@@ -179,7 +179,6 @@ entity shift_register is
 end entity shift_register;
 
 architecture shifter of shift_register is
-	
 	SIGNAL shift: std_logic_vector(5 downto 0);
 begin
 	-- insert code here.
