@@ -181,7 +181,49 @@ end entity shift_register;
 architecture shifter of shift_register is
 	
 begin
-	-- insert code here.
+	process (dir)
+	begin
+
+		if dir = '0' then
+			
+			if shamt = "00011" then
+				dataout(31 downto 3) <= datain(28 downto 0);
+				dataout(2 downto 0) <= "000";
+			
+			if shamt = "00010" then
+				dataout(31 downto 2) <= datain(29 downto 0);
+				dataout(1 downto 0) <= "00";
+			
+			if shamt = "00001" then
+				dataout(31 downto 1) <= datain(30 downto 0);
+				dataout(0) <= "0";
+
+			else
+				dataout <= datain;
+			
+			end if;
+		end if;
+
+		if dir = '1' then
+	
+			if shamt = "00011" then
+				dataout(28 downto 0) <= datain(31 downto 3);
+				dataout(31 downto 29) <= "000";
+	
+			elsif shamt = "00010" then
+				dataout(29 downto 0) <= datain(31 downto 2);
+				dataout(31 downto 30) <= "00";
+
+			elsif shamt = "00001" then
+				dataout(30 downto 0) <= datain(31 downto 0);
+				dataout(31) <= "0";
+	
+			else
+				dataout <= datain;
+			end if;
+		end if;
+
+	end process; 
 end architecture shifter;
 
 
