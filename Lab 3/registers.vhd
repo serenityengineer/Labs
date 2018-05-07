@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 --
 -- LAB #3
 --
@@ -74,6 +74,11 @@ architecture memmy of register8 is
 	end component;
 begin
 	-- insert your code here.
+	--Code: using generate to instantiate the register
+	REG_GEN:
+		FOR p IN 0 TO 7 GENERATE
+			Rp: bitstorage PORT MAP(datain(p), enout, writein, dataout(p));
+		END GENERATE;
 end architecture memmy;
 
 --------------------------------------------------------------------------------
@@ -92,8 +97,37 @@ end entity register32;
 architecture biggermem of register32 is
 	-- hint: you'll want to put register8 as a component here 
 	-- so you can use it below
+COMPONENT register8		--this defines the 8bit register as a usable component
+		PORT(datain: IN std_logic_vector(7 DOWNTO 0);
+	    	enout:  IN std_logic;
+	     	writein: IN std_logic;
+	     	dataout: OUT std_logic_vector(7 DOWNTO 0));
+	END COMPONENT;
+	--enable created as a vector, used to enable the 4 components of the 32
+	--bit register.
+	SIGNAL 	enable: std_logic_vector(3 DOWNTO 0);
+	SIGNAL	writein: std_logic_vector(3 DOWNTO 0);
 begin
 	-- insert code here.
+	-- instantiating the register
+	-- creating the structure for each component, set enables
+	enable <= 	"0000" WHEN enout32 = '0' ELSE
+				"1100" WHEN enout32 = '1' AND enout16 = '0' ELSE
+				"1110" WHEN enout32 = '1' AND enout16 = '1' AND enout8 = '0' ELSE
+				"1111" WHEN enout32 = '1' AND enout16 = '1' AND enout8 = '1';
+	
+	writein <=	"1111" WHEN writein32 = '1' ELSE
+				"0011" WHEN writein32 = '0' AND writein16 = '1' ELSE
+				"0001" WHEN writein32 = '0' AND writein16 = '0' AND writein8 = '1' ELSE
+				"0000" WHEN writein32 = '0' AND writein16 = '0' AND writein8 = '0';
+
+	-- using component of 8 bit register; stack of 4 8Bits creates a 32Bit reg:
+R1: register8 PORT MAP(datain(7 DOWNTO 0), enable(0), writein(0), dataout(7 DOWNTO 0));
+R2: register8 PORT MAP(datain(15 DOWNTO 8), enable(1), writein(1), dataout(15 DOWNTO 8));
+R3: register8 PORT MAP(datain(23 DOWNTO 16), enable(2), writein(2), dataout(23 DOWNTO 16));
+R4: register8 PORT MAP(datain(31 DOWNTO 24), enable(3), writein(3), dataout(31 DOWNTO 24));
+
+
 end architecture biggermem;
 
 --------------------------------------------------------------------------------
@@ -111,9 +145,34 @@ entity adder_subtracter is
 end entity adder_subtracter;
 
 architecture calc of adder_subtracter is
+-- use the fulladder from above
+COMPONENT fulladder 
+    port (a : in std_logic;
+          b : in std_logic;
+          cin : in std_logic;
+          sum : out std_logic;
+          carry : out std_logic
+         );
+end COMPONENT;
+-- use cary32 as the register for adding
+-- use hold to work through the operations
+SIGNAL carry32: std_logic_vector(31 DOWNTO 0);
+SIGNAL hold: std_logic_vector(31 DOWNTO 0);
 
 begin
-	-- insert code here.
+	with add_sub select
+	input <= not (datain_b) when "1",
+		datain_b when others;
+
+	c_out(0) <= input;
+	co <= c_out(32);
+
+	full_adder: for i in 0 to 31 generate
+		total: fulladder PORT MAP(datain_a(i), input(i), c_out(i), dataout(i), c_out(i+1));
+	
+	end generate;  
+	
+
 end architecture calc;
 
 --------------------------------------------------------------------------------
@@ -124,15 +183,24 @@ Use ieee.std_logic_unsigned.all;
 
 entity shift_register is
 	port(	datain: in std_logic_vector(31 downto 0);
-	   	dir: in std_logic;
+	   	dir: in std_logic; --direction
 		shamt:	in std_logic_vector(4 downto 0);
 		dataout: out std_logic_vector(31 downto 0));
 end entity shift_register;
 
 architecture shifter of shift_register is
-	
+	SIGNAL shift: std_logic_vector(5 downto 0);
 begin
 	-- insert code here.
+	WITH shift SELECT dataout(31 downto 0) <=
+		datain(28 downto 0) & "000" WHEN "000011"
+		datain(29 downto 0) & "00" WHEN "000010"
+		datain(30 downto 0) & "0" WHEN "000001"
+		"000" & datain(28 downto 0) WHEN "100011"
+		"00" & datain(29 downto 0) WHEN "100010"
+		"0" & datain(30 downto 0) WHEN "100001"
+		datain(31 downto 0) WHEN OTHERS;
+
 end architecture shifter;
 
 
