@@ -181,7 +181,10 @@ end entity shift_register;
 architecture shifter of shift_register is
 	SIGNAL shift: std_logic_vector(5 downto 0);
 begin
+	-- shift vector gets the direction and shift amount
+	shift <= dir & shamt;
 	-- insert code here.
+	-- using with/select for concurrency
 	WITH shift SELECT dataout(31 downto 0) <=
 		datain(28 downto 0) & "000" WHEN "000011",
 		datain(29 downto 0) & "00" WHEN "000010",
