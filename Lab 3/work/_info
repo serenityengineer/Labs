@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Users/Mahalia/Desktop/Keep/examples
 Eadder_subtracter
-Z0 w1525662341
+Z0 w1525662691
 Z1 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z3 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
@@ -24,9 +24,9 @@ V6Q>z3I3:cA48Ln_V=VzXC3
 !s100 zbf<`4?H<2<aOl3ZPN_D63
 Z9 OP;C;10.4a;61
 32
-Z10 !s110 1525662390
+Z10 !s110 1525662767
 !i10b 1
-Z11 !s108 1525662390.000000
+Z11 !s108 1525662767.000000
 Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/registers.vhd|
 Z13 !s107 C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/registers.vhd|
 !i113 1
@@ -266,8 +266,8 @@ R5
 Z31 DEx4 work 14 shift_register 0 22 E0:F9OSJi;Zm1DU9AnlMR2
 l183
 L181
-VeUXoCN2@bL9V;Q8[0bl::3
-!s100 AKozQdS5G4U6`Fh`86gWX0
+V;:d507_Df@7Tm>3me=D]h0
+!s100 ?KmmmPQVRMoPCl?E5a8lX2
 R9
 32
 R10
