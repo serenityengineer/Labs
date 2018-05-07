@@ -145,9 +145,24 @@ entity adder_subtracter is
 end entity adder_subtracter;
 
 architecture calc of adder_subtracter is
+-- use the fulladder from above
+COMPONENT fulladder 
+    port (a : in std_logic;
+          b : in std_logic;
+          cin : in std_logic;
+          sum : out std_logic;
+          carry : out std_logic
+         );
+end COMPONENT;
+-- use cary32 as the register for adding
+-- use hold to work through the operations
+SIGNAL carry32: std_logic_vector(31 DOWNTO 0);
+SIGNAL hold: std_logic_vector(31 DOWNTO 0);
 
 begin
 	-- insert code here.
+	
+
 end architecture calc;
 
 --------------------------------------------------------------------------------
