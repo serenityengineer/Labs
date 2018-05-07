@@ -66,6 +66,7 @@ entity register8 is
 end entity register8;
 
 architecture memmy of register8 is
+	--using bitstorage from above as a component	
 	component bitstorage
 		port(bitin: in std_logic;
 		 	 enout: in std_logic;
@@ -75,9 +76,10 @@ architecture memmy of register8 is
 begin
 	-- insert your code here.
 	--Code: using generate to instantiate the register
+	
 	REG_GEN:
-		FOR p IN 0 TO 7 GENERATE
-			Rp: bitstorage PORT MAP(datain(p), enout, writein, dataout(p));
+		FOR r8 IN 0 TO 7 GENERATE
+			R0: bitstorage PORT MAP(datain(r8), enout, writein, dataout(r8));
 		END GENERATE;
 end architecture memmy;
 
@@ -160,8 +162,16 @@ SIGNAL carry32: std_logic_vector(31 DOWNTO 0);
 SIGNAL hold: std_logic_vector(31 DOWNTO 0);
 
 begin
-	-- insert code here.
-	
+	with add_sub select
+		input <= not (datain_b) when "1",
+		datain_b when others;
+
+		c_out(0) <= input;
+		co <= c_out(32);
+
+	full_adder: for i in 0 to 31 generate
+		total: fulladder PORT MAP(datain_a(i), input(i), c_out(i), dataout(i), c_out(i+1));	
+	end generate;  
 
 end architecture calc;
 
