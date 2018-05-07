@@ -9,7 +9,7 @@ z2
 cModel Technology
 dC:/Users/Mahalia/Desktop/Keep/examples
 Eadder_subtracter
-Z0 w1525669540
+Z0 w1525672515
 Z1 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z3 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
@@ -24,9 +24,9 @@ VQ4E?Xce`aM@IFUBXH=zW52
 !s100 o2fL7W^A1CPLNBXK6Nm0d1
 Z9 OP;C;10.4a;61
 32
-Z10 !s110 1525669544
+Z10 !s110 1525672519
 !i10b 1
-Z11 !s108 1525669544.000000
+Z11 !s108 1525672519.000000
 Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/registers.vhd|
 Z13 !s107 C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/registers.vhd|
 !i113 1
@@ -38,11 +38,11 @@ R2
 R3
 R4
 R5
-DEx4 work 16 adder_subtracter 0 22 Q4E?Xce`aM@IFUBXH=zW52
+Z16 DEx4 work 16 adder_subtracter 0 22 Q4E?Xce`aM@IFUBXH=zW52
 l164
 L149
-V;F7gOdhG[J3QAUgE?7WoI0
-!s100 kD8]Q2Oi>e[mW4bd?kFgH1
+VH27L659Cnhl=JmK1VDQS91
+!s100 foML9[;57DmYbzz4F_X4Q0
 R9
 32
 R10
@@ -83,11 +83,11 @@ R2
 R3
 R4
 R5
-Z16 DEx4 work 10 bitstorage 0 22 Y1]15Qh8BCAD7^_[`];fW3
+Z17 DEx4 work 10 bitstorage 0 22 Y1]15Qh8BCAD7^_[`];fW3
 l21
 L19
-Z17 Vj[d@nLWUJa>eT5g4ccRfh3
-Z18 !s100 >C<lEnBjkno6BlaBg7zNz3
+Z18 Vj[d@nLWUJa>eT5g4ccRfh3
+Z19 !s100 >C<lEnBjkno6BlaBg7zNz3
 R9
 32
 R10
@@ -128,11 +128,11 @@ R2
 R3
 R4
 R5
-Z19 DEx4 work 9 fulladder 0 22 h_5Io:84LGF_24`M`eF5Q0
+Z20 DEx4 work 9 fulladder 0 22 h_5Io:84LGF_24`M`eF5Q0
 l49
 L48
-Z20 VVi>>>8L^0P^boQ]FZ]S=i2
-Z21 !s100 <Eni[?PWcgZ?5R]=[zAgg3
+Z21 VVi>>>8L^0P^boQ]FZ]S=i2
+Z22 !s100 <Eni[?PWcgZ?5R]=[zAgg3
 R9
 32
 R10
@@ -173,11 +173,11 @@ R2
 R3
 R4
 R5
-DEx4 work 10 register32 0 22 DV<I0[11_;a]lS4GHPgFI1
+Z23 DEx4 work 10 register32 0 22 DV<I0[11_;a]lS4GHPgFI1
 l112
 L99
-V=FDE:0b_Dz5V`b9lWfW?I2
-!s100 8IQSA:ohIJfLRYUg5OgIU1
+Z24 V=FDE:0b_Dz5V`b9lWfW?I2
+Z25 !s100 8IQSA:ohIJfLRYUg5OgIU1
 R9
 32
 R10
@@ -218,11 +218,11 @@ R2
 R3
 R4
 R5
-Z22 DEx4 work 9 register8 0 22 b4E6KhF=HlKmTRXMO9?_Z3
+Z26 DEx4 work 9 register8 0 22 b4E6KhF=HlKmTRXMO9?_Z3
 l76
 L68
-V0QHP;og]4Mc;0^;R^0lIO3
-!s100 GzLEGHFM>cCC7ANH=HLG@2
+Z27 V0QHP;og]4Mc;0^;R^0lIO3
+Z28 !s100 GzLEGHFM>cCC7ANH=HLG@2
 R9
 32
 R10
@@ -244,9 +244,9 @@ R6
 R7
 R8
 l0
-L176
-VY@b3W;:LCYKzgI_Wf[emH0
-!s100 YKSN4SnbBReJVQDblJA8X3
+L190
+V2fTk2_E=AL@;S4gOcL3?13
+!s100 zkiKeOgci7DDPO3_jSglk2
 R9
 32
 R10
@@ -263,11 +263,11 @@ R2
 R3
 R4
 R5
-DEx4 work 14 shift_register 0 22 Y@b3W;:LCYKzgI_Wf[emH0
-l185
-L183
-VDB?U5Y[Rk_[??Af?]5A823
-!s100 W:Ul:mPfTCRj=6oId[k@30
+DEx4 work 14 shift_register 0 22 2fTk2_E=AL@;S4gOcL3?13
+l199
+L197
+Vzmm=nz_86_<]JYA?JjD=a2
+!s100 M@4JhNBJRfQz2Ck;aVAFR1
 R9
 32
 R10
@@ -279,15 +279,15 @@ R13
 R14
 R15
 Etestreg_vhd
-Z23 w1524975369
+Z29 w1524975369
 R3
 R1
 R2
 R4
 R5
 R6
-Z24 8C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd
-Z25 FC:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd
+Z30 8C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd
+Z31 FC:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd
 l0
 L12
 VZ`TaVEm;ULLR8A2dI0hS71
@@ -296,9 +296,9 @@ R9
 32
 R10
 !i10b 1
-Z26 !s108 1525669543.000000
-Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd|
-Z28 !s107 C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd|
+R11
+Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd|
+Z33 !s107 C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/tregisterswclues.vhd|
 !i113 1
 R14
 R15
@@ -317,9 +317,9 @@ R9
 32
 R10
 !i10b 1
-R26
-R27
-R28
+R11
+R32
+R33
 !i113 1
 R14
 R15
