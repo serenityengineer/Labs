@@ -181,7 +181,6 @@ end entity shift_register;
 architecture shifter of shift_register is
 	SIGNAL shift: std_logic_vector(5 downto 0);
 begin
-<<<<<<< HEAD
 	-- insert code here.
 	WITH shift SELECT dataout(31 downto 0) <=
 		datain(28 downto 0) & "000" WHEN "000011"
@@ -192,51 +191,6 @@ begin
 		"0" & datain(30 downto 0) WHEN "100001"
 		datain(31 downto 0) WHEN OTHERS;
 
-=======
-	process (dir)
-	begin
-
-		if dir = '0' then
-			
-			if shamt = "00011" then
-				dataout(31 downto 3) <= datain(28 downto 0);
-				dataout(2 downto 0) <= "000";
-			
-			if shamt = "00010" then
-				dataout(31 downto 2) <= datain(29 downto 0);
-				dataout(1 downto 0) <= "00";
-			
-			if shamt = "00001" then
-				dataout(31 downto 1) <= datain(30 downto 0);
-				dataout(0) <= "0";
-
-			else
-				dataout <= datain;
-			
-			end if;
-		end if;
-
-		if dir = '1' then
-	
-			if shamt = "00011" then
-				dataout(28 downto 0) <= datain(31 downto 3);
-				dataout(31 downto 29) <= "000";
-	
-			elsif shamt = "00010" then
-				dataout(29 downto 0) <= datain(31 downto 2);
-				dataout(31 downto 30) <= "00";
-
-			elsif shamt = "00001" then
-				dataout(30 downto 0) <= datain(31 downto 0);
-				dataout(31) <= "0";
-	
-			else
-				dataout <= datain;
-			end if;
-		end if;
-
-	end process; 
->>>>>>> 7e42492b1b7e80ad02c3417556a1ffe8a1ea37a6
 end architecture shifter;
 
 
