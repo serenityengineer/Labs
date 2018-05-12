@@ -9,4 +9,25 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity testreg_vhd
 -- Compiling architecture behavior of testreg_vhd
 
+} {} {}} {C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/registers.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/Users/Mahalia/Desktop/School Files/ECEGR 2220 (Microprocessor Design)/MicroGitStuff/GitHub/Labs/Lab 3/registers.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity bitstorage
+-- Compiling architecture memlike of bitstorage
+-- Compiling entity fulladder
+-- Compiling architecture addlike of fulladder
+-- Compiling entity register8
+-- Compiling architecture memmy of register8
+-- Compiling entity register32
+-- Compiling architecture biggermem of register32
+-- Compiling entity adder_subtracter
+-- Compiling architecture calc of adder_subtracter
+-- Compiling entity shift_register
+-- Compiling architecture shifter of shift_register
+
 } {} {}}
