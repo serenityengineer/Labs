@@ -33,12 +33,25 @@ architecture ALU_Arch of ALU is
 			shamt:	in std_logic_vector(4 downto 0);
 			dataout: out std_logic_vector(31 downto 0));
 	end component shift_register;
-
-begin
-	-- Add ALU VHDL implementation here
 	--SIGNALS
 	signal direction: std_logic; --direction of the shift register
-	signal operation: std_logic; --operation of the adder/subtractor 
+	signal operation: std_logic; --operation of the adder/subtractor
+	signal addsub_res: std_logic_vector(31 downto 0); --result of the adder/subtractor
+	signal shift_res: std_logic_vector(31 downto 0); --result of the shifter
+	signal op_res: std_logic_vector(31 downto 0); --result of the operation
+	constant zeros: std_logic_vector(31 downto 0) := (others => '0'); --zero vector for comparison
+begin
+	-- Add ALU VHDL implementation here
+	with Control select direction <=
+	'0' when '0', --for addition
+	'1' when '1', --for subtratction
+	'Z' when others; --set to high impedence for others
+
+	
+
+
+	
+
 	
 
 end architecture ALU_Arch;
